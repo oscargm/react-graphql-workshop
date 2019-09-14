@@ -7,9 +7,9 @@ import typeDefs from './graphql/schema';
 const server = new ApolloServer({
   resolvers,
   typeDefs,
-  context: async ({ req }) => {
-    const token = req.headers.authorization
-      ? req.headers.authorization.replace('Bearer ', '')
+  context: async ({ event }) => {
+    const token = event.headers.authorization
+      ? event.headers.authorization.replace('Bearer ', '')
       : null;
 
     if (token) {
