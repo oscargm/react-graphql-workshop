@@ -7,19 +7,19 @@ import typeDefs from './graphql/schema';
 const server = new ApolloServer({
   resolvers,
   typeDefs,
-  // context: async ({ req }) => {
-  //   const token = req.headers.authorization
-  //     ? req.headers.authorization.replace('Bearer ', '')
-  //     : null;
+  context: async ({ req }) => {
+    const token = req.headers.authorization
+      ? req.headers.authorization.replace('Bearer ', '')
+      : null;
 
-  //   if (token) {
-  //     const payload = await util.promisify(jwt.verify)(token, 'whateversecret');
+    if (token) {
+      const payload = await util.promisify(jwt.verify)(token, 'whateversecret');
 
-  //     return { user: payload.user };
-  //   }
+      return { user: payload.user };
+    }
 
-  //   return null;
-  // },
+    return null;
+  },
   introspection: true,
   playground: true,
 });
