@@ -1,8 +1,43 @@
 {
   "name": "react-graphql-workshop",
+  "version": "0.1.0",
   "private": true,
-  "workspaces": [
-    "./**/client",
-    "./**/server"
-  ]
+  "dependencies": {
+    "@apollo/react-hooks": "3.1.0",
+    "@reach/router": "1.2.1",
+    "apollo-boost": "0.4.4",
+    "apollo-server-lambda": "^2.9.3",
+    "cuid": "2.1.6",
+    "dayjs": "1.8.16",
+    "graphql": "14.5.5",
+    "jsonwebtoken": "8.5.1",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "react-feather": "2.0.3",
+    "react-scripts": "3.1.1",
+    "styled-components": "4.3.2"
+  },
+  "scripts": {
+    "build": "run-p build:**",
+    "build:app": "react-scripts build",
+    "build:lambda": "netlify-lambda build src/lambda --config webpack.functions.js",
+    "start": "run-p start:**",
+    "start:app": "react-scripts start",
+    "start:lambda": "netlify-lambda serve src/lambda --config webpack.functions.js",
+    "test": "react-scripts test"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "netlify-lambda": "^1.6.3",
+    "npm-run-all": "^4.1.5",
+    "webpack-node-externals": "^1.7.2"
+  }
 }

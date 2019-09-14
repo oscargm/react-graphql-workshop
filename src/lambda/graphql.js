@@ -1,8 +1,8 @@
-const { ApolloServer } = require('apollo-server');
-const jwt = require('jsonwebtoken');
-const util = require('util');
-const resolvers = require('./resolvers');
-const typeDefs = require('./schema');
+import { ApolloServer } from 'apollo-server-lambda';
+import jwt from 'jsonwebtoken';
+import util from 'util';
+import resolvers from './graphql/resolvers';
+import typeDefs from './graphql/schema';
 
 const server = new ApolloServer({
   resolvers,
@@ -20,6 +20,10 @@ const server = new ApolloServer({
 
     return null;
   },
+  introspection: true,
+  playground: true,
 });
+
+export const handler = server.createHandler();
 
 server.listen().then(server => console.log(`Server started at ${server.url}`));

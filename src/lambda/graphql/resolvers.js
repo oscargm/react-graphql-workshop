@@ -1,4 +1,4 @@
-const { ApolloError } = require('apollo-server');
+const { ApolloError } = require('apollo-server-lambda');
 const {
   createTweet,
   deleteTweet,
